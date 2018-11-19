@@ -1,0 +1,12 @@
+body {
+  background: #333;
+  font-family: sans-serif;
+  margin: 0 0;
+}
+
+.content {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
