@@ -26,20 +26,53 @@ const deckLoading = () => (deck.id ? deckLoaded() : window.requestAnimationFrame
 const deckLoaded = () => {
   let h1 = $.querySelector('h1');
   h1.innerText = 'Deck Loaded';
-  createAddButton();
+  createAddForm();
+  // createAddButton();
 };
 
-const createAddButton = () => {
+const createAddForm = ()=> {
   let content = $.querySelector('.content');
-  let button = $.createElement('button');
-  // button.value = 'Deal Cards';
-  button.innerText = 'Deal Cards';
-  content.appendChild(button);
-  button.addEventListener('click', (e) => {
-    // e.preventDefault();
-    dealCards(5);
+  let form = $.createElement('form');
+  let select = $.createElement('select');
+  let input = $.createElement('input');
+  input.type = 'submit';
+  input.value = 'Deal Cards';
+  input.id = 'form-button';
+  addOptions(select);
+  addButtonListener(form);
+  form.appendChild(select);
+  form.appendChild(input);
+  content.appendChild(form);
+};
+
+const addOptions = (select)=> {
+  for (let i = 1; i <= 10; i++) {
+    let option = $.createElement('option');
+    option.value = i;
+    option.innerText = i;
+    select.appendChild(option);
+  }
+};
+
+const addButtonListener = (form)=> {
+  form.addEventListener('submit', (e)=> {
+    e.preventDefault();
+    let s = $.querySelector('select');
+    dealCards(s.value);
   });
 };
+
+// const createAddButton = () => {
+//   let content = $.querySelector('.content');
+//   let button = $.createElement('button');
+//   // button.value = 'Deal Cards';
+//   button.innerText = 'Deal Cards';
+//   content.appendChild(button);
+//   button.addEventListener('click', (e) => {
+//     // e.preventDefault();
+//     dealCards(5);
+//   });
+// };
 
 const dealCards = (n) => {
   axios.get(`https://deckofcardsapi.com/api/deck/${deck.id}/draw/?count=${n}`)

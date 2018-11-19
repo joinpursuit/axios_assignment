@@ -12,6 +12,45 @@ body {
   flex-direction: column;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+select,
+#form-button {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 200%;
+  outline: none;
+  padding: 24px 24px;
+  width: auto;
+}
+
+#form-button {
+  background: transparent;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  color: white;
+  margin-left: 24px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+}
+
+#form-button:hover {
+  background: #555;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+#form-button:active {
+  background: lime;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
 button {
   background: transparent;
   border: 1px solid white;
@@ -40,6 +79,7 @@ button:active {
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 img {
