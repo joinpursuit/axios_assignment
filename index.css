@@ -1,0 +1,28 @@
+body {
+  font-family: Verdana;
+  background: #3cb371;
+}
+
+/* div.cardImgs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+} */
+
+.innerCards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+img {
+  height: 180px;
+  width: auto;
+}
+
+img:hover {
+  height: 200px;
+  width: auto;
+}
