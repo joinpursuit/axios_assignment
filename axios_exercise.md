@@ -21,7 +21,7 @@ However, we can't query this API multiple times for that deck if we don't save i
 
 ## Drawing Cards
 
-The next thing we'd like to do is to draw cards from our deck. Using our `deck_id`, the Deck of Cards API lets us draw one or more cards from the deck that we just created. The route for drawing five cards should look something like this: `https://deckofcardsapi.com/api/deck/~deck_id~/draw/?count=5`, where `~deck_id~` is the `deck_id` item we saved. Replace your `deck_id` and use Axios to query this route and log the response you receive to the console.
+The next thing we'd like to do is to draw cards from our deck. Using our `deck_id`, the Deck of Cards API lets us draw one or more cards from the deck that we just created. The route for drawing five cards should look something like this: `https://deckofcardsapi.com/api/deck/~deck_id~/draw/?count=5`, where `~deck_id~` is the `deck_id` item we saved. Replace your `deck_id` and use Axios to query this route and log the response you receive to the console.//
 
 What is available to us here in the response? Well, again, we have only one key in this response that we really care about - `cards`, which contains an array of `Card` objects. Each of these `Card` objects have a set of parameters, all of which could prove useful to us, depending on what we want to do with them: There's an `image` URL, which links to a picture of the card. There's a `value` and `suit` parameter, and then there's a `code` parameter with shorthand should we need it.
 
