@@ -1,0 +1,39 @@
+body {
+  background-color: #21501c;
+}
+
+.cardC {
+  background-color: #143311;
+  margin: 50px;
+  padding: 50px;
+}
+.button {
+  display: flex;
+  font-size: 25px;
+  margin: 20px;
+  font-family: cursive;
+  border-radius: 15px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+.button:hover {
+  background-color: maroon;
+}
+.handSize {
+  margin: 20px;
+  font-size: 25px;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+#acard {
+  margin: 5px;
+}
+#acard:hover {
+  transform: scale(1.1);
+}
