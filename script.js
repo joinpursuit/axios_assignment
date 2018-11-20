@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let button = document.querySelector(".button")
+  let button = document.querySelector(".button");
+  let body = document.querySelector('body');
 
   let deck = {
     id: '',
@@ -12,28 +13,48 @@ document.addEventListener("DOMContentLoaded", () => {
   // const reshuffleDeck = `https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`;
   // const discard = `https://deckofcardsapi.com/api/deck/${discard_id}/pile/<<pile_name>>/add/?cards=${discard_cards}`;
 
-    const fireRequest = () => {
+const getHand = (deck_id) => {
+  axios
+    .get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
+      .then(deck_id => {
+        let img = document.createElement('img');
+        img['src'] = deck_id['image'];
+        body.appendChild(img);
+      })
+}
 
-      axios
-      .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-        .then(response => {
-          deck['id'] = response['data']['deck_id']
-          debugger
-        })
+axios
+  .get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
+    .then(response => {
+      return response['data']['deck_id']
+    }).then(deck_ID => {
+      button.addEventListener('click', () => {
+        getHand(deck_ID);
+        
+      })
+    })
 
-        .catch(err => {
-          debugger
-        })
-    }
 
-    button.addEventListener("click", () => {
+      // axios
+      // .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+      //   .then(response => {
+      //     deck['id'] = response['data']['deck_id']
+      //     // debugger
+      //   })
+      //
+      //   .catch(err => {
+      //     // debugger
+      //   })
 
-      axios
-      .get(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`)
-      console.log(fireRequest(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`));
+
+    // button.addEventListener("click", () => {
+    //
+    //   axios
+    //   .get(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`)
+    //   console.log(fireRequest(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`));
 
       // console.log(drawCards);
-    })
+    // })
 
 
 })
