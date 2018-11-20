@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   axios
-    .post("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", data)
+    .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     .then(response => {
-      debugger;
+      //debugger;
     })
 
     .catch(err => {
-      debugger;
+      //debugger;
     });
   let button = document.querySelector(".button");
   button.addEventListener("click", drawCards);
