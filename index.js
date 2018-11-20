@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let myP = document.querySelector(".myP");
+  // let myP = document.querySelector(".myP");
   let deck_id;
   axios
     .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
@@ -14,17 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
   button.addEventListener("click", event => {
     axios
       .get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
-      .then(res2 => {
-        let allImages = document.querySelectorAll("img");
+      .then(res => {
+        let allImages = document.querySelector(".cards");
+        while (allImages.children.length) {
+          allImages.removeChild(allImages.firstChild);
+        }
         console.log(allImages);
-        res2.data.cards.forEach(card => {
+        console.log(res.data.cards);
+
+        res.data.cards.forEach(card => {
           let image = document.createElement("img");
           image.src = card.image;
-          if (allImages.length === 0) {
-            document.body.appendChild(image);
-          } else {
-            image.removeChild(image.childNodes[0]);
-          }
+          // if (allImages.length === 0) {
+          allImages.appendChild(image);
+          // } else {
+          //   image.removeChild(image.childNodes[0]);
+          // }
         });
       });
 
