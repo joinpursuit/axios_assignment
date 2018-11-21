@@ -1,0 +1,68 @@
+body {
+  /* margin: 0px 0px; */
+  background: url('background_2.jpg') repeat;
+  opacity: 1;
+}
+
+#container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  height: 40px;
+  /* width: 100%; */
+  background-color: gray;
+}
+
+#remainingInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  color: green;
+  font-family: monospace;
+  font-weight: lighter;
+  font-size: 25px;
+  background-color: lightgray;
+  padding: 5px;
+}
+
+button {
+  margin-left: 10px;
+  width: 180px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size:15px;
+  color: gray;
+  background-color: yellow;
+}
+
+button:hover {
+  background-color: green;
+  color: white;
+  border: 1px solid white;
+  transition-duration: 0.5s;
+}
+
+select {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size:15px;
+  color: gray;
+}
+
+ol {
+  display: block;
+  flex-grow: 
+}
+
+img {
+  display: grid;
+  /* float: right; */
+}
