@@ -1,31 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let deckID;
+  let deckID, numCards;
   let remainingCards = document.getElementById("remainingCards");
-  const button = document.getElementById("drawCards");
-  const cardContainer = document.getElementById("cardContainer");
+  const drawCardsButton = document.getElementById("drawCards"),
+    cardContainer = document.getElementById("cardContainer"),
+    selectNum = document.getElementById("selectNum"),
+    newDeck = document.getElementById("newDeck");
 
   axios
     .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     .then(response => {
       deckID = response.data.deck_id;
-      console.log(deckID);
-      // return axios.get(
-      //   "https://deckofcardsapi.com/api/deck/" + deckID + "/draw/?count=5"
-      // );
-    })
-    .then(response => {
-      console.log(response);
-      // let drawCardsButton = document.getElementById("drawCards");
-      // drawCardsButton.addEventListener("click", () => {
-      //   console.log("Clicked!");
-      //   debugger
-      // });
     })
     .catch(err => {
       console.log(err);
     });
-
-  let drawCardsButton = document.getElementById("drawCards");
 
   drawCardsButton.addEventListener("click", () => {
     axios
@@ -36,8 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
           numCards
       )
       .then(response => {
-        console.log(deckID);
-        console.log(response.data.cards);
         let drawnCards = response.data.cards;
 
         while (cardContainer.firstChild) {
@@ -49,32 +35,26 @@ document.addEventListener("DOMContentLoaded", () => {
           card.src = drawnCards[i].image;
           cardContainer.appendChild(card);
         }
-        console.log(drawnCards[0].image);
 
         remainingCards.innerText = response.data.remaining;
-
-        debugger;
       })
       .catch(err => {
         console.log(err);
       });
   });
 
-  const selectNum = document.getElementById("selectNum");
-  let numCards;
-
   selectNum.addEventListener("change", event => {
     numCards = event.target.value;
-    console.log(numCards);
   });
 
-  // const drawCards = () => {
-  //   axios
-  //     .get("https://deckofcardsapi.com/api/deck/" + deckID + "/draw/?count=5")
-  //     .then(response => {
-  //       debugger;
-  //       console.log(deckID);
-  //     });
-  // };
-  // drawCards();
+  newDeck.addEventListener("click", () => {
+    axios
+    .get("https://deckofcardsapi.com/api/deck/new/")
+    .then(response => {
+      deckID = response.data.deck_id;
+      alert("You have replaced your old deck that had " + remainingCards.innerText + " cards with a new deck of 52 cards.")
+      remainingCards.innerText = "52";
+    })
+  })
+
 });

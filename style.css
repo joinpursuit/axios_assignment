@@ -13,6 +13,16 @@ img:hover {
   height: 196.25px;
 }
 
+span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#drawCards {
+  background-color: lightblue;
+  border-radius: 5px;
+}
+
 .bodyDiv {
   background-color: #395a3a;
   padding: 25px 25px 25px 25px;
