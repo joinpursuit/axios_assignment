@@ -12,15 +12,16 @@ const getHand = (deck_id) => {
     .get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
       .then(response => {
         let deck = response['data']['cards'];
-        deck.forEach(card => {
+        let div = document.createElement('div');
+          deck.forEach(card => {
             let img = document.createElement('img');
-            if (img !== null) {
-            img.src = card['image'];
-            body.appendChild(img);
-        } else {
-          img.remove();
-        }
-        })
+            if (!img) {
+              img.src = card['image'];
+              body.appendChild(img);
+            } else {
+              img.remove()
+            }
+          })
 
     })
 }
@@ -36,28 +37,5 @@ axios
 
       })
     })
-
-
-      // axios
-      // .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-      //   .then(response => {
-      //     deck['id'] = response['data']['deck_id']
-      //     // debugger
-      //   })
-      //
-      //   .catch(err => {
-      //     // debugger
-      //   })
-
-
-    // button.addEventListener("click", () => {
-    //
-    //   axios
-    //   .get(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`)
-    //   console.log(fireRequest(`https://deckofcardsapi.com/api/deck/${deck['id']}/draw/?count=2`));
-
-      // console.log(drawCards);
-    // })
-
 
 })
