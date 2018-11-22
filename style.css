@@ -1,0 +1,19 @@
+body {
+  background-color: #477148;
+}
+
+img {
+  width: 113px;
+  height: 157px;
+  /* original size of cards were 226 x 314 so I halved the values */
+}
+
+img:hover {
+  width: 141.25px;
+  height: 196.25px;
+}
+
+.bodyDiv {
+  background-color: #395a3a;
+  padding: 25px 25px 25px 25px;
+}
