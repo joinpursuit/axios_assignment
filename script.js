@@ -12,18 +12,41 @@ const getHand = (deck_id) => {
     .get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
       .then(response => {
         let deck = response['data']['cards'];
-        let div = document.createElement('div');
+
           deck.forEach(card => {
-            let img = document.createElement('img');
-            if (!img) {
+            let div;
+            if (div === undefined) {
+              div = document.createElement('div');
+              let img = document.createElement('img');
               img.src = card['image'];
-              body.appendChild(img);
+                body.appendChild(div);
+                div.appendChild(img);
             } else {
-              img.remove()
+              clearHand();
             }
           })
 
     })
+}
+
+const clr_getHand = () => {
+  clearHand();
+  drawHand();
+}
+
+// const drawHand = () => {
+//   let div = document.createElement('div');
+//   let img = document.createElement('img');
+//   img.src = card['image'];
+//     body.appendChild(div);
+//     div.appendChild(img);
+// }
+
+const clearHand = () => {
+  let div = document.querySelector('div');
+  if (div) {
+    div.remove();
+  }
 }
 
 axios
