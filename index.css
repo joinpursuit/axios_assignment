@@ -1,0 +1,21 @@
+body {
+  background-color: #006b31;
+  text-align: center;
+}
+
+.button {
+  padding: 10px;
+  margin: 50px;
+}
+
+.cards {
+  width: 800px;
+  margin: auto;
+}
+img {
+  width: auto;
+  height: auto;
+}
+img:hover {
+  height: 420px;
+}
