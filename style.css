@@ -1,11 +1,17 @@
 body {
   background-color: #477148;
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: wrap; */
 }
 
 img {
   width: 113px;
   height: 157px;
   /* original size of cards were 226 x 314 so I halved the values */
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
 }
 
 img:hover {
@@ -21,6 +27,17 @@ span {
 #drawCards {
   background-color: lightblue;
   border-radius: 5px;
+}
+
+#newDeck {
+  background-color: green;
+  border-radius: 5px;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
 }
 
 .bodyDiv {
