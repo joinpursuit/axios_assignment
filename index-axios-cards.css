@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(54, 121, 28);
+  padding: 100px;
+}
+
+.main {
+
+  display: grid;
+  place-items: center center;
+  background-color: rgb(44, 102, 38);
+  border-radius: 25px;
+  border: 8px double white;
+  padding-left: 25px;
+  padding-bottom: 50px;
+
+}
+
+img:hover {
+  cursor: grab;
+  transition: .75s;
+  transform: scale(1.30);
+}
+
+.buttonAndSelect {
+  padding: 50px 0px;
+}
