@@ -17,24 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
     .get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
     .then(response => {
       currentCardsDrawn = response.data.cards;
+      console.log('temp');
       renderingCards(currentCardsDrawn);
-      // console.log('2');
+      console.log('finished');
     })
   }
 
   function renderingCards(arrObj) {
     innerDiv = document.createElement('div');
+    console.log('1');
     div.appendChild(innerDiv);
     arrObj.forEach(el => {
       let img = document.createElement('img');
       img.src = el.image;
       innerDiv.appendChild(img);
-      button.addEventListener('click', () => {
-        // debugger
-        innerDiv.remove()
-      });
     })
+    button.addEventListener('click', () => {
+      console.log('second');
+      innerDiv.remove()
+      // debugger
+    });
+    console.log('almost finished');
 
   }
-  button.addEventListener('click', drawCards);
+  button.addEventListener('click', () => {
+    console.log('hiiii');
+    drawCards();
+    console.log('??');
+  });
 })
