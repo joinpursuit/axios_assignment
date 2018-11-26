@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   let deckID,
     numCards = 1,
-    decksUsed = 1;
-  let remainingCards = document.getElementById("remainingCards");
+    decksUsed = 1,
+    remainingCards = document.getElementById("remainingCards"),
+    messageDiv = document.querySelector(".messageDiv"),
+    numDecks = document.getElementById("numDecks");
   const drawCardsButton = document.getElementById("drawCards"),
     cardContainer = document.getElementById("cardContainer"),
     selectNum = document.getElementById("selectNum"),
     newDeck = document.getElementById("newDeck");
-  let numDecks = document.getElementById("numDecks");
 
   axios
     .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
@@ -58,15 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => {
         deckID = response.data.deck_id;
         response.data.shuffled = true;
-        console.log(response.data.shuffled);
-        alert(
-          "You have replaced your old deck that had " +
-            remainingCards.innerText +
-            " cards with a new deck of 52 cards."
-        );
+        messageDiv.innerHTML =
+          "<p>You have replaced your old deck that had " +
+          remainingCards.innerText +
+          " card(s) with a new deck of 52 cards.</p>";
         if (remainingCards.innerText === "52") {
-          alert("Your old deck had 52 cards...why did you throw it away?!");
+          messageDiv.innerHTML =
+            "<p>Your old deck had 52 cards...why did you throw it away?!</p>";
         }
+        setTimeout(() => {
+          messageDiv.innerHTML = "";
+        }, 3000);
         remainingCards.innerText = "52";
         decksUsed++;
         numDecks.innerText = decksUsed;
