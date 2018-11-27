@@ -1,10 +1,11 @@
 let deckId = '';
+let info = '';
 document.addEventListener("DOMContentLoaded", () => {
 
 console.log("test");
   let button = document.querySelector(".button");
-  button.addEventListener("click", reFireRequest())
-
+  // button.addEventListener("click", reFireRequest)
+button.addEventListener("click", fireRequest)
 
   function fireRequest() {
     axios
@@ -12,10 +13,12 @@ console.log("test");
   )
     .then(res => {
       deckId = res.data.deck_id;
-      // showDeck(res.data.deck_id)
 
+      console.log("RES:::",res, "ID:::",deckId, "ID:",res.data.deck_id, res.data);
+      
+      // showDeck(res.data.deck_id)
       // let info = res.data.deck_id
-      console.log("RES:::",res, "ID:::",info, "ID:",res.data.deck_id);
+      // console.log("RES:::",res, "ID:::",info, "ID:",res.data.deck_id, res.data);
     })
     .catch(err => {
       console.log("error: ", err);
