@@ -144,3 +144,6 @@ function reFireRequest() {
   })
 }
 //------------------------------
+N.B.: deckId = '' + res.data.deck_id = ${}
+return deckId = `${res.data.deck_id}`;
+//------------------------------
