@@ -1,3 +1,5 @@
+Control + Option + F = to get rid of the irritating distraction.
+
 //practice from youtube notes:
 
 //https://www.youtube.com/watch?v=EhsYCBQ8TuA
