@@ -31,16 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
         //----------------------------
         // 1. remove firstChild until display is empty. then append a new set of images.
         //----------------------------
-        // while (display.firstChild) {
-        //   display.removeChild(display.firstChild)
-        // }
+        while (display.firstChild) {
+          display.removeChild(display.firstChild)
+        }
         // debugger
 
-        // fiveCards.forEach(card => {
-        //   let img = document.createElement("img")
-        //   img.src = card.image;
-        //   display.appendChild(img)
-        // })
+        fiveCards.forEach(card => {
+          let img = document.createElement("img")
+          img.src = card.image;
+          display.appendChild(img)
+        })
+
         //----------------------------------
         // 2. replace the old display with the new div:
         // ---------------------------------
@@ -55,31 +56,31 @@ document.addEventListener("DOMContentLoaded", () => {
         //
         // document.body.replaceChild(div, display);
 
-      //---------------------------------------
-      // 3. remove() and appendChild() vs replaceChild
-      //--------------------------------------
-      let div = document.createElement("div");
-      div.classList.add("display");
+        //---------------------------------------
+        // 3. remove() and appendChild() vs replaceChild
+        //--------------------------------------
+        // let div = document.createElement("div");
+        // div.classList.add("display");
+        //
+        // fiveCards.forEach(card => {
+        //   let img = document.createElement("img")
+        //   img.src = card.image;
+        //   div.appendChild(img)
+        // })
+        //
+        // display.remove();
+        // document.body.appendChild(div);
+        // // document.body.replaceChild(div, display);
 
-      fiveCards.forEach(card => {
-        let img = document.createElement("img")
-        img.src = card.image;
-        div.appendChild(img)
-      })
-
-      display.remove();
-      document.body.appendChild(div);
-      // document.body.replaceChild(div, display);
-
-      //-------------------
+        //------------------------------------
 
 
-        console.log("HERE",res, "five",fiveCards);
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      });
-  }
+          console.log("HERE",res, "five",fiveCards);
+        })
+        .catch(err => {
+          console.log("error: ", err);
+        });
+    }
 
   // function showDeck(res) {
   //   let display = document.querySelector(".display");
