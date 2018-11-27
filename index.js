@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let fiveCards;
 
   let button = document.querySelector(".button");
-
+  let select = document.querySelector("select")
   fireRequest();
-  button.addEventListener("click", reFireRequest);
+  selectTagFilling();
 
+  button.addEventListener("click", reFireRequest);
+  select.addEventListener("change", getMoreCards);
 
   function fireRequest() {
     axios
@@ -59,22 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
         //---------------------------------------
         // 3. remove() and appendChild() vs replaceChild
         //--------------------------------------
-        // let div = document.createElement("div");
-        // div.classList.add("display");
-        //
-        // fiveCards.forEach(card => {
-        //   let img = document.createElement("img")
-        //   img.src = card.image;
-        //   div.appendChild(img)
-        // })
-        //
-        // display.remove();
-        // document.body.appendChild(div);
-        // // document.body.replaceChild(div, display);
+        let div = document.createElement("div");
+        div.classList.add("display");
+
+        fiveCards.forEach(card => {
+          let img = document.createElement("img")
+          img.src = card.image;
+          div.appendChild(img)
+        })
+
+        display.remove();
+        document.body.appendChild(div);
+        // document.body.replaceChild(div, display);
 
         //------------------------------------
-
-
           console.log("HERE",res, "five",fiveCards);
         })
         .catch(err => {
@@ -82,24 +82,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-  // function showDeck(res) {
-  //   let display = document.querySelector(".display");
-  //   let fiveCardsImage;
-  //   debugger
+    function selectTagFilling() {
+      let select = document.querySelector("select");
+      for (let i = 1; i <= 10; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = i;
+        select.appendChild(option);
+      }
+    }
 
-    // fiveCards.forEach(el => {
-    //   debugger;
-    //   return el.images;
-    // });
-    // fiveCardsImage = res.data.cards;
-    // display.innerHTML = res;
+    // document.addEventListener("change", () => {
+    //   let option = document.querySelector("option")
+    //   let numCards = option.value;
+    // })
 
-    // if (!res.length) {
-    // fireRequest()
-    // } else {
-    // reFireRequest()
-    // }
-  // }
+    function getMoreCards() {
+
+    }
+
+
 
 
 
