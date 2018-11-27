@@ -33,7 +33,7 @@ When we click, we should see the images of five cards, in a row, underneath our 
 
 Just like our Dog API project, when you click the button again, it should remove/replace each card with a new card.
 
-## Drawing More or Less Cards
+## Drawing More or Less Cards//
 
 Create a `select` tag underneath your `button`. Your `select` tag should be filled with numbers from 1 through 10. When your user selects a value, you should save their selection in a variable called `numCards`. Instead of drawing five cards each time, use `numCards` to control the number of cards the user draws.
 
