@@ -1,0 +1,18 @@
+body {
+  background-color: #006B31;
+}
+
+.table {
+  background-color: #006400;
+  text-align: center;
+  margin-top: 100px;
+}
+
+img {
+  height: auto;
+  width: auto;
+}
+
+img:hover {
+  height:400px;
+}
