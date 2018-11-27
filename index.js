@@ -29,15 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => {
         fiveCards = res.data.cards;
         let display = document.querySelector(".display");
-        let img = document.querySelector("img")
 
-        for (let i = 0; i < fiveCards.length; i++) {
-          img.src = fiveCards[i].image;
-        }
 
-        // fiveCards.forEach(card => {
-        //   img.src = card.image;
-        // })
+        // for (let i = 0; i < fiveCards.length; i++) {
+        //   img.src = fiveCards[i].image;
+        // }
+
+        fiveCards.forEach(card => {
+          let img = document.createElement("img")
+          img.src = card.image;
+          display.appendChild(img)
+        })
         // debugger
 
 
