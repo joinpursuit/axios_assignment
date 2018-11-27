@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fireRequest();
   button.addEventListener("click", reFireRequest);
 
+
   function fireRequest() {
     axios
       .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
@@ -15,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // N.B.: deckId = '' + res.data.deck_id = ${}
         return (deckId = res.data.deck_id);
       })
-      // .then(res => {
-      //   reFireRequest()
-      // })
       .catch(err => {
         console.log("error: ", err);
       });
@@ -30,27 +28,53 @@ document.addEventListener("DOMContentLoaded", () => {
         fiveCards = res.data.cards;
         let display = document.querySelector(".display");
 
-
-        // for (let i = 0; i < fiveCards.length; i++) {
-        //   img.src = fiveCards[i].image;
+        //----------------------------
+        // 1. remove firstChild until display is empty. then append a new set of images.
+        //----------------------------
+        // while (display.firstChild) {
+        //   display.removeChild(display.firstChild)
         // }
-
-        fiveCards.forEach(card => {
-          let img = document.createElement("img")
-          img.src = card.image;
-          display.appendChild(img)
-        })
         // debugger
 
+        // fiveCards.forEach(card => {
+        //   let img = document.createElement("img")
+        //   img.src = card.image;
+        //   display.appendChild(img)
+        // })
+        //----------------------------------
+        // 2. replace the old display with the new div:
+        // ---------------------------------
+        // let div = document.createElement("div");
+        // div.classList.add("display");
+        //
+        // fiveCards.forEach(card => {
+        //   let img = document.createElement("img")
+        //   img.src = card.image;
+        //   div.appendChild(img)
+        // })
+        //
+        // document.body.replaceChild(div, display);
+
+      //---------------------------------------
+      // 3. remove() and appendChild() vs replaceChild
+      //--------------------------------------
+      let div = document.createElement("div");
+      div.classList.add("display");
+
+      fiveCards.forEach(card => {
+        let img = document.createElement("img")
+        img.src = card.image;
+        div.appendChild(img)
+      })
+
+      display.remove();
+      document.body.appendChild(div);
+      // document.body.replaceChild(div, display);
+
+      //-------------------
 
 
-        // showDeck();
-
-        // showDeck(res.data.deck_id)
-        // debugger
-        // let info = `${res.data.deck_id}`
-        console.log("HERE", res, fiveCards);
-        // console.log("id:",res.data.deck_id);
+        console.log("HERE",res, "five",fiveCards);
       })
       .catch(err => {
         console.log("error: ", err);
