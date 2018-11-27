@@ -1,24 +1,22 @@
-let deckId = '';
-let info = '';
-document.addEventListener("DOMContentLoaded", () => {
 
-console.log("test");
+document.addEventListener("DOMContentLoaded", () => {
+  let deckId;
   let button = document.querySelector(".button");
-  // button.addEventListener("click", reFireRequest)
-button.addEventListener("click", fireRequest)
+
+  fireRequest();
+  button.addEventListener("click", reFireRequest);
+
 
   function fireRequest() {
     axios
-    .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1" //, deck_count//
-  )
+    .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     .then(res => {
-      deckId = res.data.deck_id;
-
-      console.log("RES:::",res, "ID:::",deckId, "ID:",res.data.deck_id, res.data);
-      
-      // showDeck(res.data.deck_id)
-      // let info = res.data.deck_id
-      // console.log("RES:::",res, "ID:::",info, "ID:",res.data.deck_id, res.data);
+      // console.log("RES:::",res, "ID:::",deckId, "ID:",res.data.deck_id, res.data);
+      N.B.: deckId = '' + res.data.deck_id = ${}
+      return deckId = `${res.data.deck_id}`;
+    })
+    .then(res => {
+      reFireRequest()
     })
     .catch(err => {
       console.log("error: ", err);
@@ -26,24 +24,22 @@ button.addEventListener("click", fireRequest)
   }
 
 
-
-
-function reFireRequest() {
-  axios
-  .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5` //, deck_count//
-)
-  .then(res => {
-    let fiveCards = res;
-    // showDeck(res.data.deck_id)
-// debugger
-    // let info = `${res.data.deck_id}`
-    console.log(res, info);
-    console.log("id:",res.data.deck_id);
-  })
-  .catch(err => {
-    console.log("error: ", err);
-  })
-}
+  function reFireRequest() {
+    axios
+    .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5`)
+    .then(res => {
+      // deckId = res.data.deck_id;
+      let fiveCards = res;
+      // showDeck(res.data.deck_id)
+  // debugger
+      // let info = `${res.data.deck_id}`
+      console.log('CHECK HERE',res, fiveCards);
+      // console.log("id:",res.data.deck_id);
+    })
+    .catch(err => {
+      console.log("error: ", err);
+    })
+  }
 
 
 
