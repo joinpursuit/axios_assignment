@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let img = document.createElement("img");
         img.setAttribute("src", url)
         img.style.paddingTop = "5px";
-        // img.style.hover =
+        // img.style.display = "table"
         div.appendChild(img);
       })
     })
@@ -39,8 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const replaceCards =()=>{
+    while (div.firstChild) {
+     div.removeChild(div.firstChild)
+    }
+  }
+
   shuffleCards();
   let play = document.querySelector(".play");
   play.addEventListener("click", drawCards);
+  play.addEventListener("click", replaceCards)
   play.style.background = "lightgreen";
 });
