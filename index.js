@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     function selectTagFilling() {
       let select = document.querySelector("select");
       for (let i = 1; i <= 10; i++) {
@@ -91,14 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
         select.value = i;
         option.innerText = i;
         select.appendChild(option);
-
       }
     }
 
-    // document.addEventListener("change", () => {
-    //   let option = document.querySelector("option")
-    //   let numCards = option.value;
-    // })
+
 
     function getMoreCards() {
       axios
@@ -109,15 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.log("select.value",select.value, "res", res, "res.data.cards", res.data.cards, "deckId", deckId);
 
-        let display = document.querySelector(".display");
-        while (display.firstChild) {
-          display.removeChild(display.firstChild)
+        let display2 = document.querySelector(".display2");
+
+        while (display2.firstChild) {
+          display2.removeChild(display2.firstChild)
         }
 
         numCards.forEach(card => {
           let img = document.createElement("img")
           img.src = card.image;
-          display.appendChild(img)
+          display2.appendChild(img)
         })
 
       })
@@ -126,31 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    function reFireRequest() {
-      axios
-        .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5`)
-        .then(res => {
-          fiveCards = res.data.cards;
-          let display = document.querySelector(".display");
-
-          while (display.firstChild) {
-            display.removeChild(display.firstChild)
-          }
-          // debugger
-
-          fiveCards.forEach(card => {
-            let img = document.createElement("img")
-            img.src = card.image;
-            display.appendChild(img)
-          })
 
 
-            console.log("HERE",res, "five",fiveCards);
-        })
-        .catch(err => {
-          console.log("error: ", err);
-        });
-    }
 
 
 
