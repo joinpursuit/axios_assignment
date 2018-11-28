@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function selectTagFilling() {
       let select = document.querySelector("select");
+      let firstOption = document.createElement("option");
+      firstOption.innerText = "Cards"
+      select.appendChild(firstOption);
       for (let i = 1; i <= 10; i++) {
         let option = document.createElement("option");
         select.value = i;
@@ -123,12 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("error: ", err);
       });
     }
-
-
-
-
-
-
 
 
 });
