@@ -1,0 +1,72 @@
+body {
+  background-color: #477148;
+  font-family: Arial;
+  font-weight: bold;
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: wrap; */
+}
+
+img {
+  width: 113px;
+  height: 157px;
+  /* original size of cards were 226 x 314 so I halved the values */
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+}
+
+img:hover {
+  width: 141.25px;
+  height: 196.25px;
+}
+
+span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+button {
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  border-color: black;
+}
+
+select {
+  height: 30px;
+}
+
+#drawCards {
+  background-color: DarkOliveGreen;
+  border-radius: 5px;
+}
+
+#newDeck {
+  background-color: green;
+  border-radius: 5px;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.headerDiv {
+  background-color: #395a3a;
+  padding: 25px 25px 25px 25px;
+  /* margin: 0 auto;
+  align-items: center; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.optionsDiv {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 20px 20px 20px;
+  width: 225px;
+}
