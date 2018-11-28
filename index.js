@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   let deckId; //called immediately (on refresh)
   let fiveCards;
+  let numCards;
 
   let button = document.querySelector(".button");
-  let select = document.querySelector("select")
+  let select = document.querySelector("select");
   fireRequest();
   selectTagFilling();
 
   button.addEventListener("click", reFireRequest);
   select.addEventListener("change", getMoreCards);
+  // select.addEventListener("change", reFireRequest);
 
   function fireRequest() {
     axios
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => {
         // console.log("RES:::",res, "ID:::",deckId, "ID:",res.data.deck_id, res.data);
         // N.B.: deckId = '' + res.data.deck_id = ${}
-        return (deckId = res.data.deck_id);
+        deckId = res.data.deck_id;
       })
       .catch(err => {
         console.log("error: ", err);
@@ -61,21 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
         //---------------------------------------
         // 3. remove() and appendChild() vs replaceChild
         //--------------------------------------
-        let div = document.createElement("div");
-        div.classList.add("display");
-
-        fiveCards.forEach(card => {
-          let img = document.createElement("img")
-          img.src = card.image;
-          div.appendChild(img)
-        })
-
-        display.remove();
-        document.body.appendChild(div);
-        // document.body.replaceChild(div, display);
+        // let div = document.createElement("div");
+        // div.classList.add("display");
+        //
+        // fiveCards.forEach(card => {
+        //   let img = document.createElement("img")
+        //   img.src = card.image;
+        //   div.appendChild(img)
+        // })
+        //
+        // display.remove();
+        // document.body.appendChild(div);
+        // // // document.body.replaceChild(div, display);
 
         //------------------------------------
-          console.log("HERE",res, "five",fiveCards);
+          console.log("HERE",res, "five",fiveCards, "deckId", deckId);
         })
         .catch(err => {
           console.log("error: ", err);
@@ -86,9 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
       let select = document.querySelector("select");
       for (let i = 1; i <= 10; i++) {
         let option = document.createElement("option");
-        option.value = i;
+        select.value = i;
         option.innerText = i;
         select.appendChild(option);
+
       }
     }
 
@@ -98,10 +101,56 @@ document.addEventListener("DOMContentLoaded", () => {
     // })
 
     function getMoreCards() {
+      axios
+      .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${select.value}`)
+      .then (res => {
+        numCards = res.data.cards;
+        numCardsValue = select.value;
 
+        console.log("select.value",select.value, "res", res, "res.data.cards", res.data.cards, "deckId", deckId);
+
+        let display = document.querySelector(".display");
+        while (display.firstChild) {
+          display.removeChild(display.firstChild)
+        }
+
+        numCards.forEach(card => {
+          let img = document.createElement("img")
+          img.src = card.image;
+          display.appendChild(img)
+        })
+
+      })
+      .catch (err => {
+        console.log("error: ", err);
+      });
     }
 
+    function reFireRequest() {
+      axios
+        .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5`)
+        .then(res => {
+          fiveCards = res.data.cards;
+          let display = document.querySelector(".display");
 
+          while (display.firstChild) {
+            display.removeChild(display.firstChild)
+          }
+          // debugger
+
+          fiveCards.forEach(card => {
+            let img = document.createElement("img")
+            img.src = card.image;
+            display.appendChild(img)
+          })
+
+
+            console.log("HERE",res, "five",fiveCards);
+        })
+        .catch(err => {
+          console.log("error: ", err);
+        });
+    }
 
 
 
