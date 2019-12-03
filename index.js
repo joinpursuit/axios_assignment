@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
         let id = document.querySelector("#deckID");
         let e = id.innerText;
-        let url = "https://deckofcardsapi.com/api/deck/" + e +"/draw/?count=1"
+        let url = "https://deckofcardsapi.com/api/deck/" + e +"/draw/?count=5"
         console.log(url)
         fetch(url).then(res => {
             if(!res.ok) {
@@ -24,10 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return res.json();
         }).then(res => {
-            let imageURL = res.cards
-            console.log(imageURL)
+            let deck = document.querySelector("#deck");
+            res.cards.forEach(idx => {
+                let image = document.createElement("img");
+                image.src = res.cards[idx].images.png;
+                deck.appendChild(image);
+            })
+            // let imageURL = res.cards[0].image;
+            // console.log(imageURL)
         }).catch(err => {
-            debugger;
         })
     })
 })
