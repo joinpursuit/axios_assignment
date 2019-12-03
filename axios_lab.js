@@ -14,12 +14,13 @@ document.addEventListener("DOMContentLoaded", () =>{
     }
 
     const getId = (data) => {
-        let p = document.createElement("p")
-        div.appendChild(p)
+        let p = document.querySelector("#id")
         p.innerText = data.deck_id
     }
 
     fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", getId)
+    let button = document.querySelector("#btm")
+    button.addEventListener("click",)
     let div = document.querySelector("shuffleDeck")
     let ul = document.createElement("ul")
     div.appendChild(ul)
