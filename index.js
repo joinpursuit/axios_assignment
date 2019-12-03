@@ -29,15 +29,18 @@ document.addEventListener("DOMContentLoaded", () =>{
 
    const drawCards = (res) => {
      let img = document.createElement("img")
-     let src = res["cards"][0]["image"]
+     for(let i =0; i < res["cards"].length; i++){
+         let img = document.createElement("img")
+        let src = res["cards"][i]["image"]
+        img.src = src
+        document.body.appendChild(img)
+     }
      console.log(src)
-     img.src = src
-     document.body.appendChild(img)
    }
 
    let button = document.querySelector("button")
    button.addEventListener("click", (saveId)=> {
-       let url = "https://deckofcardsapi.com/api/deck/" +  savedDeck+ "/draw/?count=1"
+       let url = "https://deckofcardsapi.com/api/deck/" +  savedDeck+ "/draw/?count=5"
         fetchData(url, drawCards)
    })
 })
