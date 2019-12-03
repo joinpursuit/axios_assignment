@@ -25,14 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         }).then(res => {
             let deck = document.querySelector("#deck");
-            res.cards.forEach(idx => {
+            res.cards.forEach(el => {
                 let image = document.createElement("img");
-                image.src = res.cards[idx].images.png;
+                image.src = el.image;
                 deck.appendChild(image);
             })
             // let imageURL = res.cards[0].image;
             // console.log(imageURL)
         }).catch(err => {
+            debugger
         })
     })
 })
