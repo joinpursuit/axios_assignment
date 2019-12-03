@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded",() => {
 
-    const fecthData = (url, callback) => {
-        debugger
+    const fetchData = (url, callback) => {
         fetch(url).then(res => {
             if(!res.ok) {
                 throw Error(res.statusText);
@@ -9,29 +8,26 @@ document.addEventListener("DOMContentLoaded",() => {
             return res.json();
         }).then(res => {
             callback(res)
-            debugger
         }).catch(err => {
             console.log(err)
         })
     }
     const createDeck = (data) => {
-        
         let deck = document.querySelector('p')
         deck.innerText = data.deck_id   
     }
-    draw(){
-        
+    const showDraw= (data)=>{
+//listing cards 
+       //create images of cards 
     }
-   
-    
-    fecthData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1/", createDeck)
-    let button = document.querySelector("button");
+
+    fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1/", createDeck)
+    let button = document.querySelector("#button");
     button.addEventListener("click", () => {
-        let url = "https://deckofcardsapi.com/api/deck/~deck_id~/draw/?count=5"
-        let deck = document.querySelector("p").innerText
-        let counter = Number(document.querySelector("#selectOption").value)
+        let deck = document.querySelector("p").innerText //puts the deck in a p tag, that probably doesn't need to show
+        let counter = Number(document.querySelector("#selectOption").value) //selects are necessary to select the cards in the deck
         fecthData(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=${counter}`)
-        draw()
+        
     })
-    let url = "https://deckofcardsapi.com/api/deck/new/"
+
 })
