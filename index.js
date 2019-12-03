@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", ()=>{
-    let deckId = "";
+    let deckId = ""
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1").then(res=>{
         return res.json()
     }).then(res=>{
-        deckId = res["deck_id"]
-        })
+        deckId = res["deck_id"] 
         
-    fetch(`https://deckofcardsapi.com/api/deck/` + deckId + `/draw/?count=5`).then(res=>{
-        console.log(res)
-        debugger
     })
+    
+    
 })
