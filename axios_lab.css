@@ -1,0 +1,14 @@
+body {
+  background: mediumseagreen;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#container {
+  background: darkgreen;
+
+}
+img:hover {
+  height: 110%;
+  width: 110%;
+}
