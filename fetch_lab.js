@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const drawFive = (data) => {
+        let deck = document.querySelector("#five")
+        deck.innerHTML = "";
         for(let i = 0; i < data.cards.length; i++){
             let img = document.createElement("img");
             let src = data["cards"][i]["image"];
             img.src = src;
-            document.body.appendChild(img);
+            deck.appendChild(img);
         }
     }
 
