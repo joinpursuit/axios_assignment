@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).catch(err => console.log(err))
     }
 
+
     const getId = (data) => {
         let p = document.querySelector("#deck");
         p.innerText = data.deck_id;
@@ -37,4 +38,3 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchData(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=${count}`, drawCard);
     })
 
-})
