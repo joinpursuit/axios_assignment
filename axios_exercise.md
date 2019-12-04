@@ -13,7 +13,7 @@ Let's break this down into smaller problems, shall we?
 
 ## Creating and Saving A Deck
 
-When your page first loads, you should generate a new shuffled deck from the Deck of Cards API. The route to hit to accomplish this, according to the Deck of Cards docs, is this: `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`. Use Axios.
+When your page first loads, you should generate a new shuffled deck from the Deck of Cards API. The route to hit to accomplish this, according to the Deck of Cards docs, is this: `n `. Use Axios.
 
 The response from that route should give you several parameters, but the only one that we really should care about is `deck_id`. With this `deck_id`, the Deck of Cards API is going to give us five cards from _that specific deck_ when we draw them. If we draw another five cards, it'll draw the next five unique cards from that deck. The API, in other words, is keeping track of this information for us.
 
