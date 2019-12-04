@@ -11,30 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const drawFive = async (id) => {
+    const drawCards = async (id) => {
         try {
-            let drawCards =  await axios.get(`https://deckofcardsapi.com/api/deck/${id}/draw/?count=5`)
-            debugger
+            let select = document.querySelector("#cardsList");
+            let value = select.value
+            let drawData =  await axios.get(`https://deckofcardsapi.com/api/deck/${id}/draw/?count=${value}`)
             let deck = document.querySelector("#five")
             deck.innerHTML = "";
-            for(let i = 0; i < drawCards.data.cards.length; i++){
+            for(let i = 0; i < drawData.data.cards.length; i++){
                 let img = document.createElement("img");
-                let src = drawCards.data["cards"][i]["image"];
+                let src = drawData.data["cards"][i]["image"];
                 img.src = src;
                 deck.appendChild(img);
             }
         } catch (err){
             console.log(err);
         }
-        
     }
-
 
     let button = document.querySelector("#drawBtn");
     button.addEventListener("click", () => {
-        drawFive(deck_id);
+        drawCards(deck_id);
     })
     
     fetchData();
-    
 })
