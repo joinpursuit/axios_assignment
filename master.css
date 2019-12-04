@@ -1,0 +1,33 @@
+body {
+    background: rgb(42, 128, 42);
+    text-align: center;
+    padding-top: 25px;
+}
+
+#title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    font-style: italic;
+}
+
+button {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background: rgb(223, 223, 223);
+    border-radius: 20px;
+    border-color: whitesmoke;
+    padding: 8px;
+}
+
+form {
+    margin: 20px;
+}
+
+select {
+    background: lightgoldenrodyellow;
+}
+
+.zoom:hover {
+    transform: scale(1.2);
+}
+
