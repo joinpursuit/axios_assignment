@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", () =>{
 
    const drawCards = async (deck_id) => {
        try{
-        let draw = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`);
+           let select = document.querySelector("select")
+           let value = select.value
+        //    console.log(value)
+        //    debugger
+        let draw = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=${value}`);
         let deck = document.querySelector("#deck")
         deck.innerHTML = " "
         for(let i =0; i < draw.data.cards.length; i++){
@@ -28,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
           deck.appendChild(img)
        }
+
       
      } 
      catch(err) {
