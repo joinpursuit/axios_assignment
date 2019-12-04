@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () =>{
       } 
         catch(err) {
             console.log(err)
-            // debugger
+            debugger
         }
     }
  
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () =>{
        try{
         let draw = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`);
         let deck = document.querySelector("#deck")
-        deck.innerHTML = ""
+        deck.innerHTML = " "
         for(let i =0; i < draw.data.cards.length; i++){
            //  debugger
             let img = document.createElement("img")
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () =>{
      } 
      catch(err) {
         console.log(err)
-        // debugger
+        debugger
     }
      console.log(src)
    }
