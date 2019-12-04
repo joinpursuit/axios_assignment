@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", () =>{
-    let savedId = ""
-
+    // let deckId =""
     const fetchData = async () => {
-        let shuffledDeck = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
-        let deckId = res.data.deck_id
+        let res = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`)
+        let deck_id = res.data.deck_id
+        console.log(res)
+        debugger
 
-        let 
+        // let 
 
     }
+    // document.body.append()
+    // console.log(fetchData())
    
    
 })
+// console.log(fetchData())
