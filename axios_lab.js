@@ -1,46 +1,50 @@
 document.addEventListener("DOMContentLoaded", () =>{
     
-    const fetchData = (url, callback) => {
-        fetch(url).then(res => {
-            if(!res.ok){
-                throw Error(res.statusText)
-            }
-            return res.json()
-        }).then(res => {
-            debugger
-            callback(res)
-        }).catch(err => {
+    const fetchData = async () => {
+        try {
+            let shuffleDeck = await axios.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
+            let deck_id = shuffleDeck.data.deck_id
+            let button = document.querySelector("#btm")
+            button.addEventListener("click", () => {
+                drawCard(deck_id)
+            })
+        } catch(err) {
             console.log(err)
-        })
+            debugger
+        }
+        
     }
-
-    const getId = (data) => {
-        firstId = data.deck_id
-    }
-
-    fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", getId)
-    let button = document.querySelector("#btm")
-    button.addEventListener("click", getId)
-    let div = document.querySelector("shuffleDeck")
-   
-    const drawCards = (firstId) => {
-        let numCards = 0;
-        let p = document.querySelector("#getCard")
-        numCards = event.target.value
-        p.innerText(numCards)
-    }
-
-        fetchData("https://deckofcardsapi.com/api/deck/${firstId}/draw/?count=`$numCards`", drawCards)
-        let select = document.querySelector("select")
-        select.addEventListener("change", (event) => {
-
-    })
-
-
     
+    const drawCard = async (deck_id) => {
+        try {
+            let drawCard = await axios.get(
+                `https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`
+                );
+            let p = document.querySelector("#getCard")
+            p.innerText = drawCard.data.cards
+        } catch(err) {
+            console.log(err)
+            debugger
+        }
+    }
+
+
+
+    // const getId = (data) => {
+    //     firstId = data.deck_id
+    // }
+
+    // fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", getId)
+    // let div = document.querySelector("shuffleDeck")
+   
+    // const drawCards = (firstId) => {
+    //     let numCards = 0;
+    //     let p = document.querySelector("#getCard")
+    //     numCards = event.target.value
+    //     p.innerText(numCards)
+    // }
+
+        fetchData()
+
 })
-
-
-
-
 
