@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     option.innerText = i
     select.appendChild(option)
   }
-  x
+  
 
   let button = document.querySelector("button")
   button.addEventListener("click", () => {
