@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     let button = document.querySelector("#drawCards");
+
     button.addEventListener("click", () => {
         let id = document.querySelector("#deckID");
         let e = id.innerText;
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 image.src = el.image;
                 deck.appendChild(image);
             })
+            
         })
             // let imageURL = res.cards[0].image;
             // console.log(imageURL)
