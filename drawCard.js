@@ -1,33 +1,39 @@
-document.addEventListener("DOMContentLoaded",() => {
+document.addEventListener('DOMContentLoaded', () => {
+    const newDeckCards = async () => {
+        try {
+            let newDeck = await axios.get("https://deckofcardsapi.com/api/deck/new/")
+            let deck_id = newDeck.data.deck_id
+            let id = document.querySelector("#deckId")
+            id.innerText = newDeck.data.deck_id
+            // debugger
+            let shuffle = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`)
+            //let drawCard = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
+// debugger
+            let button = document.querySelector('#button')
+            button.addEventListener("click", (displayCard));
 
-    const fetchData = (url, callback) => {
-        fetch(url).then(res => {
-            if(!res.ok) {
-                throw Error(res.statusText);
-            }
-            return res.json();
-        }).then(res => {
-            callback(res)
-        }).catch(err => {
+            
+            // debugger
+        } catch (err) {
             console.log(err)
-        })
+            debugger
+        }
     }
-    const createDeck = (data) => {
-        let deck = document.querySelector('p')
-        deck.innerText = data.deck_id   
-    }
-    const showDraw= (data)=>{
-//listing cards 
-       //create images of cards 
-    }
-
-    fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1/", createDeck)
-    let button = document.querySelector("#button");
-    button.addEventListener("click", () => {
-        let deck = document.querySelector("p").innerText //puts the deck in a p tag, that probably doesn't need to show
-        let counter = Number(document.querySelector("#selectOption").value) //selects are necessary to select the cards in the deck
-        fecthData(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=${counter}`)
-        
-    })
-
+            const displayCard = () => {
+            let id = document.querySelector("#deckId")
+            let drawCard = axios.get(`https://deckofcardsapi.com/api/deck/${id.innerText}/draw/?count=5`)
+            .then(res=>{
+                    // debugger
+                    return res.json()
+                }
+            )
+            debugger
+             let image = document.createElement("img")
+             image.src = drawCard.data.cards[0].image 
+             document.body.appendChild(image) 
+            }
+    newDeckCards()
 })
+// let drawCard = ()=>{
+    //     console.log('hello')
+    // }
