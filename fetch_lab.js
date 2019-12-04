@@ -1,24 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let id;
+    let deck_id;
 
-    const fetchData = (url, callback) => {
-        fetch(url).then(res => {
-            if(!res.ok){
-                throw Error(res.statusText + " was the error.");
-            }
-            return res.json();
-        }).then(res => {
-            callback(res);
-        }).catch (err => {
+    const fetchData = async () => {
+        try {
+            let res = await axios.get("https://deckofcardsapi.com/api/deck/new/") 
+            deck_id = res.data.deck_id;
+            let shuffled = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`)
+            debugger
+        } catch (err) {
             console.log(err);
-        })
+        }
     }
 
-    const saveDeck = (res) => {
-        id = res["deck_id"];
-    }
-
-    const drawFive = (data) => {
+    const drawFive = (deck_id) => {
+        axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`)
+        debugger
+        
         let deck = document.querySelector("#five")
         deck.innerHTML = "";
         for(let i = 0; i < data.cards.length; i++){
@@ -29,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-    fetchData(url, saveDeck);
 
     let button = document.querySelector("#drawBtn");
     button.addEventListener("click", () => {
         let url = "https://deckofcardsapi.com/api/deck/" + id + "/draw/?count=5";
-        fetchData(url, drawFive);
+        drawFive();
     })
     
+    fetchData();
+    drawFive()
     
 })
