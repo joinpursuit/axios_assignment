@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () =>{
         let deck = document.querySelector("#cards")
         for(let i =0; i < drawCards.data.cards.length; i++){
             let img = document.createElement("img")
-            let src = drawCards.data["cards"][i]["image"]
+            let draw = drawCards.data
+            let src = draw["cards"][i]["image"]
             img.src = src
             deck.appendChild(img)
        } 

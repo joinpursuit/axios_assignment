@@ -13,3 +13,13 @@ h1 {
 button {
     background-color: brown;
 }
+img {
+    padding: 30px;
+    transition: transform .5s;
+    width: 150px;
+
+  }
+  
+img:hover {
+    transform: scale(1.5); 
+  }
