@@ -19,18 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             debugger
         }
     }
-            const displayCard = () => {
+            const displayCard = async() => {
             let id = document.querySelector("#deckId")
-            let drawCard = axios.get(`https://deckofcardsapi.com/api/deck/${id.innerText}/draw/?count=5`)
-            .then(res=>{
-                    // debugger
-                    return res.json()
-                }
-            )
-            debugger
-             let image = document.createElement("img")
-             image.src = drawCard.data.cards[0].image 
-             document.body.appendChild(image) 
+            let drawCard = await axios.get(`https://deckofcardsapi.com/api/deck/${id.innerText}/draw/?count=5`);
+            debugger;
+            drawCard.data.cards.forEach(el=>{
+                let image = document.createElement("img");
+                image.src = el.image;
+                document.body.appendChild(image)
+            })
             }
     newDeckCards()
 })
