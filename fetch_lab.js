@@ -16,14 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
             let select = document.querySelector("#cardsList");
             let value = select.value
             let drawData =  await axios.get(`https://deckofcardsapi.com/api/deck/${id}/draw/?count=${value}`)
-            let deck = document.querySelector("#five")
+            let deck = document.querySelector("#cards")
             deck.innerHTML = "";
             for(let i = 0; i < drawData.data.cards.length; i++){
                 let img = document.createElement("img");
                 let src = drawData.data["cards"][i]["image"];
                 img.src = src;
+                img.className = "zoom";
                 deck.appendChild(img);
             }
+            console.log(drawData.data);
         } catch (err){
             console.log(err);
         }

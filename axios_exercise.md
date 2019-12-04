@@ -44,3 +44,4 @@ An interesting challenge here for you folks using `replaceChild` for your DOM ma
 It's time to make your browser look like a genuine card table. On your `body`, change the background color to be a medium green. Create a `div` tag to surround your `button`, `select` box, and cards, and make the background color a slightly darker green. Center your cards and inputs on the page, and give them some `padding-top` so that they aren't touching the top of the page directly.
 
 Finally, add a `hover` effect to each card image to make it slightly bigger when the user hovers over it - as if they're selecting that card. Isn't it satisfying to mouse over all your cards now?
+ 
