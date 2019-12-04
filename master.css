@@ -1,0 +1,25 @@
+body {
+    background-color: forestgreen;
+    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#cards {
+    background-color: darkgreen;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
+button {
+    background-color: brown;
+}
+img {
+    padding: 30px;
+    transition: transform .5s;
+    width: 150px;
+
+  }
+  
+img:hover {
+    transform: scale(1.5); 
+  }
