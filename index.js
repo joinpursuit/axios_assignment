@@ -1,46 +1,46 @@
 document.addEventListener("DOMContentLoaded", () =>{
-    let savedDeck = "";
+    let deck_id = "";
 
-    const fetchData = (url, callback) =>{
-      
-        fetch(url).then(res => {
-            if(!res.ok){
-              throw Error(res.statusText + " was the error") 
-            }
-            return res.json()
-        }).then(res => {
-            // debugger
-            callback(res);
-            
-        }).catch(err => {
+    const fetchData = async () =>{
+      try{
+        let res = await axios.get("https://deckofcardsapi.com/api/deck/new/");
+         deck_id = res.data.deck_id
+        let shuffle = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`);
+        // debugger
+      } 
+        catch(err) {
             console.log(err)
-        })
+            // debugger
+        }
     }
-    const saveId = (res) => {
-        console.log(res["deck_id"])
+ 
 
-    savedDeck = res["deck_id"]
-    // debugger
-//    return savedDeck;
-     }
+   const drawCards = async (deck_id) => {
+       try{
+        let draw = await axios.get(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=5`);
+        let deck = document.querySelector("#deck")
+        deck.innerHTML = ""
+        for(let i =0; i < draw.data.cards.length; i++){
+           //  debugger
+            let img = document.createElement("img")
+           let src = draw.data["cards"][i]["image"]
+           img.src = src
 
-
-    fetchData("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", saveId)
-
-   const drawCards = (res) => {
-     let img = document.createElement("img")
-     for(let i =0; i < res["cards"].length; i++){
-         let img = document.createElement("img")
-        let src = res["cards"][i]["image"]
-        img.src = src
-        document.body.appendChild(img)
-     }
+          deck.appendChild(img)
+       }
+      
+     } 
+     catch(err) {
+        console.log(err)
+        // debugger
+    }
      console.log(src)
    }
 
    let button = document.querySelector("button")
-   button.addEventListener("click", (saveId)=> {
-       let url = "https://deckofcardsapi.com/api/deck/" +  savedDeck+ "/draw/?count=5"
-        fetchData(url, drawCards)
+   button.addEventListener("click", ()=> {
+        drawCards(deck_id)
    })
+
+   fetchData()
 })
