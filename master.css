@@ -1,0 +1,40 @@
+nav {
+    position: sticky;
+    
+}
+h1 {
+    color: crimson;
+    font-weight: bold;
+    text-shadow: darkgoldenrod;
+    text-transform: uppercase;
+    scrollbar-highlight-color: darkgoldenrod;
+}
+body {
+    background: mediumseagreen;
+    font-family: sans-serif;
+    text-decoration: darkgoldenrod;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+div {
+    background: darkolivegreen;
+    align-items: flex-start;
+    height: 100%;
+    justify-content: space-around;
+    text-align: justify;
+}
+button:hover {
+cursor: pointer; color: red; background-color: silver;
+scroll-behavior: smooth;
+}
+select {
+    color: darkred;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+form {
+    align-items: flex-start
+}
